@@ -1,0 +1,8 @@
+# Codex CLI session data (may contain tokens)
+.codex
+
+node_modules/
+dist/
+out/
+
+.vscode-test/

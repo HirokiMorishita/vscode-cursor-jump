@@ -1,0 +1,129 @@
+{
+  "name": "vscode-cursor-jump",
+  "displayName": "カーソルジャンプ",
+  "description": "単語や行頭にカーソルをジャンプできる拡張機能です。",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "license": "MIT",
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursorJump.startHintMode",
+        "title": "カーソルジャンプ先のヒントを表示します"
+      },
+      {
+        "command": "cursorJump.endHintMode",
+        "title": "ヒントを非表示にします"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "ctrl+g",
+        "command": "cursorJump.startHintMode",
+        "when": "editorTextFocus && !cursorJump.isHintMode"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "cursorJump.endHintMode",
+        "when": "editorTextFocus && cursorJump.isHintMode"
+      },
+      {
+        "key": "escape",
+        "command": "cursorJump.endHintMode",
+        "when": "textInputFocus && cursorJump.isHintMode"
+      },
+      {
+        "key": "backspace",
+        "command": "cursorJump.deleteLeft",
+        "when": "textInputFocus && cursorJump.isHintMode"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "cursorJump Configuration",
+      "properties": {
+        "cursorJump.hint.enableLineHints": {
+          "type": "boolean",
+          "default": false,
+          "description": "行単位のヒントを表示してジャンプできるようにします。"
+        },
+        "cursorJump.hint.enableWordHints": {
+          "type": "boolean",
+          "default": true,
+          "description": "単語単位のヒントを表示してジャンプできるようにします。"
+        },
+        "cursorJump.hint.hintChars": {
+          "type": "string",
+          "default": "abcdefghijklmnopqrstuvwxyz",
+          "description": "ヒントに使用する文字。デフォルトは[a-z]です"
+        },
+        "cursorJump.hint.fontFamily": {
+          "type": "string",
+          "description": "ヒントに使用するフォント。デフォルトはエディタの設定を引き継ぎます。等幅フォントの使用をお勧めします"
+        },
+        "cursorJump.hint.fontSize": {
+          "type": "number",
+          "description": "ヒントに使用するフォントサイズ。デフォルトはエディタの設定を引き継ぎます"
+        },
+        "cursorJump.hint.backgroundColor": {
+          "type": "string",
+          "default": "white",
+          "description": "ヒントの背景の色"
+        },
+        "cursorJump.hint.foregroundColor": {
+          "type": "string",
+          "default": "black",
+          "description": "ヒントの文字色"
+        },
+        "cursorJump.hint.typedChar": {
+          "type": "string",
+          "default": "_",
+          "description": "ヒントの入力済み部分を表す文字"
+        },
+        "cursorJump.autoSwitchInputMethod.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "trueの場合、ヒント表示時にIMEを自動で半角に切り替え、終了時に元に戻します。Windowsのみ有効です。macOSでは常に何もしません。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "yarn run check-types && yarn run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "yarn run check-types && yarn run lint && node esbuild.js --production",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "fmt": "dprint fmt",
+    "fix": "yarn run fmt && yarn run lint:fix",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "eastasianwidth": "^0.3.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.1",
+    "dprint": "^0.50.2",
+    "esbuild": "^0.27.0",
+    "eslint": "^9.39.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  }
+}
