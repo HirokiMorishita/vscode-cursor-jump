@@ -2,7 +2,7 @@
   "name": "vscode-cursor-jump",
   "displayName": "カーソルジャンプ",
   "description": "単語や行頭にカーソルをジャンプできる拡張機能です。",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -69,14 +69,6 @@
           "type": "string",
           "default": "abcdefghijklmnopqrstuvwxyz",
           "description": "ヒントに使用する文字。デフォルトは[a-z]です"
-        },
-        "cursorJump.hint.fontFamily": {
-          "type": "string",
-          "description": "ヒントに使用するフォント。デフォルトはエディタの設定を引き継ぎます。等幅フォントの使用をお勧めします"
-        },
-        "cursorJump.hint.fontSize": {
-          "type": "number",
-          "description": "ヒントに使用するフォントサイズ。デフォルトはエディタの設定を引き継ぎます"
         },
         "cursorJump.hint.backgroundColor": {
           "type": "string",

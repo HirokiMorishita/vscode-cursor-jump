@@ -131,7 +131,6 @@ function initialize(context: vscode.ExtensionContext, config: Config) {
     vscode.workspace.onDidChangeConfiguration(e => {
       if (
         e.affectsConfiguration("cursorJump") || e.affectsConfiguration("editor.fontSize")
-        || e.affectsConfiguration("editor.fontFamily")
       ) {
         extension.endHintMode();
         const newConfig = loadConfig();
