@@ -1,0 +1,30 @@
+name: Publish VSCode Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "yarn"
+          cache-dependency-path: "yarn.lock"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Publish to VSCode Marketplace
+        run: |
+          yarn deploy
+        env:
+          VSCE_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}

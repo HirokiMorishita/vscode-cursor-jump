@@ -1,3 +1,4 @@
+.github/**
 .vscode/**
 .vscode-test/**
 node_modules/**
@@ -5,7 +6,12 @@ out/**
 src/**
 zenhan/**
 .gitignore
+.yarnrc
+dprint.json
 esbuild.js
+mise.toml
+yarn.lock
+resource/*.gif
 **/.vscode-test.*
 **/eslint.config.mjs
 **/tsconfig.json

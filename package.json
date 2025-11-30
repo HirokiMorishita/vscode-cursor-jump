@@ -104,7 +104,8 @@
     "lint:fix": "eslint src --fix",
     "fmt": "dprint fmt",
     "fix": "yarn run fmt && yarn run lint:fix",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "deploy": "vsce publish --yarn"
   },
   "dependencies": {
     "eastasianwidth": "^0.3.0",
