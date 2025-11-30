@@ -2,7 +2,6 @@ import * as vscode from "vscode";
 import z from "zod";
 
 const decorationConfigSchema = z.object({
-  fontFamily: z.string().default(""),
   fontSize: z.number().default(0),
   backgroundColor: z.string().default("white"),
   foregroundColor: z.string().default("black"),
@@ -44,8 +43,7 @@ export function loadConfig() {
       hintChars: hintConfig.get<string>("hintChars"),
     },
     decorationConfig: {
-      fontFamily: hintConfig.get<string>("fontFamily") || editorConfig.get<string>("fontFamily"),
-      fontSize: hintConfig.get<number>("fontSize") || editorConfig.get<number>("fontSize"),
+      fontSize: editorConfig.get<number>("fontSize"),
       backgroundColor: hintConfig.get<string>("backgroundColor"),
       foregroundColor: hintConfig.get<string>("foregroundColor"),
       typedChar: hintConfig.get<string>("typedChar"),
