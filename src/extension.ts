@@ -4,14 +4,12 @@ import { Config, loadConfig } from "./config";
 import { Decorator } from "./decorator";
 import { DocumentReader } from "./documentReader";
 import { Hint, HintGenerator } from "./hintGenerator";
-import { ImeMode, ImeSwitcher } from "./imeSwitcher";
 import { Segmenter } from "./segmenter";
 
 export class CursorJump implements vscode.Disposable {
   private hints: Hint[] = [];
   private currentInput: string = "";
   private isHintMode: boolean = false;
-  private previousIM: ImeMode = "";
 
   constructor(
     private readonly deps: {
@@ -20,7 +18,6 @@ export class CursorJump implements vscode.Disposable {
       readonly segmenter: Segmenter;
       readonly decorator: Decorator;
       readonly hintGenerator: HintGenerator;
-      readonly imeSwitcher: ImeSwitcher;
     },
   ) {
     vscode.commands.executeCommand("setContext", "cursorJump.isHintMode", false);
@@ -39,8 +36,6 @@ export class CursorJump implements vscode.Disposable {
     decorator.setDecoration(this.hints, this.currentInput);
     this.isHintMode = true;
     vscode.commands.executeCommand("setContext", "cursorJump.isHintMode", this.isHintMode);
-    this.previousIM = await this.deps.imeSwitcher.obtainIm();
-    this.deps.imeSwitcher.switchIm("0");
   }
 
   async endHintMode() {
@@ -48,7 +43,6 @@ export class CursorJump implements vscode.Disposable {
     this.isHintMode = false;
     vscode.commands.executeCommand("setContext", "cursorJump.isHintMode", this.isHintMode);
     this.deps.decorator.resetDecoration();
-    this.deps.imeSwitcher.switchIm(this.previousIM);
   }
 
   handleTypeOnHintMode(args: any) {
@@ -109,8 +103,7 @@ function initialize(context: vscode.ExtensionContext, config: Config) {
   const decorator = new Decorator(hintGenerator, config.decorationConfig);
   const segmenter = new Segmenter();
   const documentReader = new DocumentReader();
-  const imeSwitcher = new ImeSwitcher(config.imeSwitcherConfig, context);
-  const extension = new CursorJump({ config, documentReader, segmenter, decorator, hintGenerator, imeSwitcher });
+  const extension = new CursorJump({ config, documentReader, segmenter, decorator, hintGenerator });
 
   const disposables: vscode.Disposable[] = [
     extension,

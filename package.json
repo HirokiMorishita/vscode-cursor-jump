@@ -2,7 +2,7 @@
   "name": "vscode-cursor-jump",
   "displayName": "カーソルジャンプ",
   "description": "単語や行頭にカーソルをジャンプできる拡張機能です。",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -87,11 +87,6 @@
           "type": "string",
           "default": "_",
           "description": "ヒントの入力済み部分を表す文字"
-        },
-        "cursorJump.autoSwitchInputMethod.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "trueの場合、ヒント表示時にIMEを自動で半角に切り替え、終了時に元に戻します。Windowsのみ有効です。macOSでは常に何もしません。"
         }
       }
     }

@@ -46,9 +46,6 @@ VSCodeで単語や行頭にカーソルをジャンプできる拡張機能で�
 - `cursorJump.hint.typedChar`
   - ヒントの入力済み部分を表す文字。
   - デフォルトは `_` です。
-- `cursorJump.autoSwitchInputMethod.enable`
-  - trueの場合、ヒント表示時にIMEを自動で半角に切り替え、終了時に元に戻します。Windowsのみ有効です。macOSでは常に何もしません。
-  - デフォルトは `true` です。
 
 ## ライセンス
 
@@ -60,8 +57,6 @@ VSCodeで単語や行頭にカーソルをジャンプできる拡張機能で�
   - [BSD-3 LICENSE](./THIRD_PARTY/TinySegmenter.txt)
 - [vimium](https://github.com/philc/vimium)
   - [MIT LICENSE](./THIRD_PARTY/vimium.txt)
-- [zenhan](https://github.com/iuchim/zenhan)
-  - [Unlicense](./THIRD_PARTY/zenhan.txt)
 
 その他、以下の拡張機能を参考に実装しました。
 
@@ -71,5 +66,3 @@ VSCodeで単語や行頭にカーソルをジャンプできる拡張機能で�
   - [MIT LICENSE](./THIRD_PARTY/vscode-jump-to-hint.txt)
 - [jumpy2](https://marketplace.visualstudio.com/items?itemName=DavidLGoldberg.jumpy2)
   - [MIT LICENSE](./THIRD_PARTY/jumpy2.txt)
-- [spzenhan.vim](https://github.com/kaz399/spzenhan.vim)
-  - [Unlicense](./THIRD_PARTY/spzenhan.vim.txt)

@@ -19,15 +19,9 @@ const hintConfigSchema = z.object({
 });
 export type HintConfig = z.infer<typeof hintConfigSchema>;
 
-const imeSwitcherConfigSchema = z.object({
-  enable: z.boolean().default(false),
-});
-export type ImeSwitcherConfig = z.infer<typeof imeSwitcherConfigSchema>;
-
 const configSchema = z.object({
   hintConfig: hintConfigSchema,
   decorationConfig: decorationConfigSchema,
-  imeSwitcherConfig: imeSwitcherConfigSchema,
 });
 
 export type Config = z.infer<typeof configSchema>;
@@ -35,7 +29,6 @@ export type Config = z.infer<typeof configSchema>;
 export function loadConfig() {
   const editorConfig = vscode.workspace.getConfiguration("editor");
   const hintConfig = vscode.workspace.getConfiguration("cursorJump.hint");
-  const imeSwitcherConfig = vscode.workspace.getConfiguration("cursorJump.autoSwitchInputMethod");
   return configSchema.parse({
     hintConfig: {
       enableWordHints: hintConfig.get<boolean>("enableWordHints"),
@@ -47,9 +40,6 @@ export function loadConfig() {
       backgroundColor: hintConfig.get<string>("backgroundColor"),
       foregroundColor: hintConfig.get<string>("foregroundColor"),
       typedChar: hintConfig.get<string>("typedChar"),
-    },
-    imeSwitcherConfig: {
-      enable: imeSwitcherConfig.get<boolean>("enable"),
     },
   });
 }
