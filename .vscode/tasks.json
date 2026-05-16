@@ -19,7 +19,7 @@
     },
     {
       "type": "shell",
-      "command": "mise x '--' yarn run watch:esbuild",
+      "command": "mise x '--' npm run watch:esbuild",
       "group": "build",
       "problemMatcher": {
         "owner": "esbuild",
@@ -61,7 +61,7 @@
     },
     {
       "type": "shell",
-      "command": "mise x '--' yarn run watch:tsc",
+      "command": "mise x '--' npm run watch:tsc",
       "group": "build",
       "problemMatcher": "$tsc-watch",
       "isBackground": true,

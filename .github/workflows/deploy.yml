@@ -11,20 +11,19 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "24"
-          cache: "yarn"
-          cache-dependency-path: "yarn.lock"
+          node-version: "24.15.0"
+          cache: "npm"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Publish to VSCode Marketplace
         run: |
-          yarn deploy
+          npm run deploy
         env:
           VSCE_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}

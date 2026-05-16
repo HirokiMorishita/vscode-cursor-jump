@@ -5,11 +5,9 @@ node_modules/**
 out/**
 src/**
 .gitignore
-.yarnrc
 dprint.json
 esbuild.js
 mise.toml
-yarn.lock
 resource/*.gif
 **/.vscode-test.*
 **/eslint.config.mjs
