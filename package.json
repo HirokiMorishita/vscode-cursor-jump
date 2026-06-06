@@ -23,6 +23,7 @@
   "extensionKind": [
     "ui"
   ],
+  "packageManager": "pnpm@11.4.0",
   "devEngines": {
     "packageManager": [
       {
