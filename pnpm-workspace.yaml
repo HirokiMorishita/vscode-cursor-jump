@@ -1,6 +1,0 @@
-allowBuilds:
-  '@vscode/vsce-sign': true
-  dprint: true
-  esbuild: true
-  keytar: true
-minimumReleaseAge: 10080

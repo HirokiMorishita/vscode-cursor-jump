@@ -13,20 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: enable corepack pnpm
-        run: corepack enable pnpm
-
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
           node-version: "24.15.0"
-          cache: "pnpm"
+          cache: "npm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Publish to VSCode Marketplace
         run: |
-          pnpm deploy
+          npm run deploy
         env:
           VSCE_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
