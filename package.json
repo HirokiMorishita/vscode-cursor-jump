@@ -21,6 +21,20 @@
   "extensionKind": [
     "ui"
   ],
+  "devEngines": {
+    "packageManager": [
+      {
+        "name": "node",
+        "version": "~24.15.0",
+        "onFail": "error"
+      },
+      {
+        "name": "pnpm",
+        "version": "~11.4.0",
+        "onFail": "error"
+      }
+    ]
+  },
   "contributes": {
     "commands": [
       {
@@ -92,16 +106,16 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "vscode:prepublish": "pnpm package",
+    "compile": "pnpm check-types && pnpm lint && node esbuild.js",
     "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "package": "pnpm check-types && pnpm lint && node esbuild.js --production",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "fmt": "dprint fmt",
-    "fix": "npm run fmt && npm run lint:fix",
+    "fix": "pnpm fmt && pnpm lint:fix",
     "check-types": "tsc --noEmit",
     "deploy": "vsce publish"
   },
