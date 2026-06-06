@@ -16,7 +16,9 @@
     "Other"
   ],
   "license": "MIT",
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "extensionKind": [
     "ui"
@@ -38,34 +40,47 @@
   "contributes": {
     "commands": [
       {
-        "command": "cursorJump.startHintMode",
+        "command": "cursorJump.startJumpHintMode",
         "title": "カーソルジャンプ先のヒントを表示します"
+      },
+      {
+        "command": "cursorJump.startSelectHintMode",
+        "title": "ヒントを２つ選択して範囲選択します"
       },
       {
         "command": "cursorJump.endHintMode",
         "title": "ヒントを非表示にします"
+      },
+      {
+        "command": "cursorJump.deleteLeft",
+        "title": "入力中のヒントを１文字削除します"
       }
     ],
     "keybindings": [
       {
         "key": "ctrl+g",
-        "command": "cursorJump.startHintMode",
-        "when": "editorTextFocus && !cursorJump.isHintMode"
+        "command": "cursorJump.startJumpHintMode",
+        "when": "editorTextFocus && cursorJump.mode == 'normal'"
+      },
+      {
+        "key": "ctrl+shift+g",
+        "command": "cursorJump.startSelectHintMode",
+        "when": "editorTextFocus && cursorJump.mode == 'normal'"
       },
       {
         "key": "ctrl+g",
         "command": "cursorJump.endHintMode",
-        "when": "editorTextFocus && cursorJump.isHintMode"
+        "when": "editorTextFocus && cursorJump.mode != 'normal'"
       },
       {
         "key": "escape",
         "command": "cursorJump.endHintMode",
-        "when": "textInputFocus && cursorJump.isHintMode"
+        "when": "editorTextFocus && cursorJump.mode != 'normal'"
       },
       {
         "key": "backspace",
         "command": "cursorJump.deleteLeft",
-        "when": "textInputFocus && cursorJump.isHintMode"
+        "when": "editorTextFocus && cursorJump.mode != 'normal'"
       }
     ],
     "configuration": {
