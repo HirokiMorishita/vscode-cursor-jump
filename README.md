@@ -3,24 +3,21 @@
 VSCodeで単語や行頭にカーソルをジャンプできる拡張機能です。
 
 `ctrl + g` でヒントを表示し、移動したい位置に表示されている文字列を入力すると、その位置にカーソルをジャンプできます。
+`ctrl + shift + g` で表示されるヒントを2つ選ぶと、その間の範囲を選択できます。
 
-## 和文でのカーソル移動
+## 動作例
 
-和文に対応し、単語ごとにヒントを表示します。
-
-![和文でのカーソル移動例](./resource/cursorJump-jp.gif)
-
-## コードでのカーソル移動
-
-コードでも利用できます。また、マルチペインでも移動できます。
-
-![コードでのカーソル移動例](./resource/cursorJump-code.gif)
+![動作例](./resource/cursorJump-code.gif)
 
 ## コマンド
 
-- `cursorJump.startHintMode`
-  - ヒントを表示します。
+- `cursorJump.startJumpHintMode`
+  - 表示されるヒントを1つ選ぶとその場所にカーソルを移動します。
   - デフォルトでは `ctrl + g` で起動できます。
+  - 入力した文字を取り消したい場合は `backspace` で取り消せます。
+- `cursorJump.startSelectHintMode`
+  - 表示されるヒントを2つ選ぶとその間の範囲を選択できます。
+  - デフォルトでは `ctrl + shift + g` で起動できます。
   - 入力した文字を取り消したい場合は `backspace` で取り消せます。
 - `cursorJump.endHintMode`
   - ヒントを非表示にします。
