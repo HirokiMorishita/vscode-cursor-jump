@@ -6,8 +6,8 @@
     {
       "label": "watch",
       "dependsOn": [
-        "npm: watch:tsc",
-        "npm: watch:esbuild"
+        "pnpm: watch:tsc",
+        "pnpm: watch:esbuild"
       ],
       "presentation": {
         "reveal": "never"
@@ -19,7 +19,7 @@
     },
     {
       "type": "shell",
-      "command": "mise x '--' npm run watch:esbuild",
+      "command": "mise x '--' pnpm watch:esbuild",
       "group": "build",
       "problemMatcher": {
         "owner": "esbuild",
@@ -53,7 +53,7 @@
         }
       },
       "isBackground": true,
-      "label": "npm: watch:esbuild",
+      "label": "pnpm: watch:esbuild",
       "presentation": {
         "group": "watch",
         "reveal": "never"
@@ -61,11 +61,11 @@
     },
     {
       "type": "shell",
-      "command": "mise x '--' npm run watch:tsc",
+      "command": "mise x '--' pnpm watch:tsc",
       "group": "build",
       "problemMatcher": "$tsc-watch",
       "isBackground": true,
-      "label": "npm: watch:tsc",
+      "label": "pnpm: watch:tsc",
       "presentation": {
         "group": "watch",
         "reveal": "never"
